@@ -4,6 +4,10 @@
  */
 package cuenta;
 
+import Excepciones.DatosIncorrectos;
+import Excepciones.LimiteSaldo;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -45,19 +49,29 @@ public class CuentaTest {
      */
     @Test
     public void testCuenta1() {
-        System.out.println("Este es el test de la Cuenta 1.");
-        this.cuenta1 = new  Cuenta(50, 12345);
-        float result= -1;
-        
-       
-        System.out.println("1. Withdraw $200 from account #12345");
-        cuenta1.retiro(200);
-        System.out.println("3. Deposit $100 into account #12345");
-        cuenta1.ingreso(100);
-        System.out.println("6.- Withdraw $200 from account #12345");
-        result = cuenta1.retiro(200);
-        assertEquals(-250, result);
-        System.out.println("El balance final de la cuenta 1 es:" + result);
+        try {
+            System.out.println("Este es el test de la Cuenta 1.");
+            this.cuenta1 = new  Cuenta(50, 12345);
+            float result= -1;
+            
+            
+            System.out.println("1. Withdraw $200 from account #12345");
+            cuenta1.retiro(200);
+            System.out.println("3. Deposit $100 into account #12345");
+            cuenta1.ingreso(100);
+            System.out.println("6.- Withdraw $200 from account #12345");
+            result = cuenta1.retiro(200);
+            assertEquals(-250, result);
+            System.out.println("El balance final de la cuenta 1 es:" + result);
+        } catch (DatosIncorrectos ex) {
+                System.out.println(ex.getMessage());
+
+//Logger.getLogger(CuentaTest.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LimiteSaldo ex) {
+                System.out.println(ex.getMessage());
+
+// Logger.getLogger(CuentaTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         
     }
@@ -66,23 +80,32 @@ public class CuentaTest {
      */
     @Test
     public void testCuenta2() {
-        System.out.println("Este es el test de la Cuenta 2.");
-        this.cuenta1 = new  Cuenta(0, 67890);
-        float result= -1;
-        
-       
-        System.out.println("2.- Withdraw $350 from account  #67890");
-        cuenta2.retiro(350);
-        System.out.println("4.- Withdraw $200 from account  #67890");
-        cuenta2.retiro(200);
-        System.out.println("5.- Withdraw $150 from account  #67890");
-        cuenta2.retiro(150);
-        System.out.println("7.- Deposit $50ninto account  #67890");
-        result = cuenta2.ingreso(50);
-        System.out.println("8.- Withdraw $100 from account  #67890");
-        cuenta2.retiro(100);
-        assertEquals(-250, result);
-        System.out.println("El balance final de la cuenta 2 es:" + result);
+        try {
+            System.out.println("Este es el test de la Cuenta 2.");
+            this.cuenta1 = new  Cuenta(0, 67890);
+            float result= -1;
+            
+            
+            System.out.println("2.- Withdraw $350 from account  #67890");
+            cuenta2.retiro(350);
+            System.out.println("4.- Withdraw $200 from account  #67890");
+            cuenta2.retiro(200);
+            System.out.println("5.- Withdraw $150 from account  #67890");
+            cuenta2.retiro(150);
+            System.out.println("7.- Deposit $50ninto account  #67890");
+            result = cuenta2.ingreso(50);
+            System.out.println("8.- Withdraw $100 from account  #67890");
+            cuenta2.retiro(100);
+            assertEquals(-250, result);
+            System.out.println("El balance final de la cuenta 2 es:" + result);
+        } catch (DatosIncorrectos ex) {
+                    System.out.println(ex.getMessage());
+
+//Logger.getLogger(CuentaTest.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LimiteSaldo ex) {
+            System.out.println(ex.getMessage());
+//Logger.getLogger(CuentaTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
     
