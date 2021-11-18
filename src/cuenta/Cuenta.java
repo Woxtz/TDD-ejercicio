@@ -31,7 +31,7 @@ public class Cuenta {
     }
     
     
-    public static float ingreso(float ingreso){
+    public float ingreso(float ingreso){
         return 0;        
     }
     
