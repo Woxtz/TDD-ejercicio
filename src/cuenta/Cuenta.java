@@ -10,11 +10,33 @@ package cuenta;
  */
 public class Cuenta {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    private float saldo;
+    private final int idCuenta;
+    
+    public Cuenta(int idCuenta, float saldo){
+        
+        this.saldo = saldo;
+        this.idCuenta = idCuenta;
+    
     }
+    
+
+    public float balance(){
+    
+        return 0;
+    }
+    
+    public float retiro(float cantidad){
+        return 0;
+    }
+    
+    
+    public static float ingreso(float ingreso){
+        return 0;        
+    }
+    
+  
+    
+    
     
 }
